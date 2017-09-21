@@ -33,7 +33,10 @@ int main(){
    
         profissoes[i].nome  = (char *)  malloc(100*sizeof(char));
         profissoes[i].codigo    = (int *) malloc(sizeof(int));
+    }
 
+    for(i=0 ; i<numProf ; i++)
+    {
         printf("Digite o nome: "); 
         scanf("%100[^\n]s", profissoes[i].nome);
         printf("Digite o codigo da profisao: ");
