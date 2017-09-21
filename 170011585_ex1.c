@@ -38,7 +38,7 @@ int main(){
     for(i=0 ; i<numProf ; i++)
     {
         printf("Digite o nome: "); 
-        scanf("%100[^\n]s", profissoes[i].nome);
+        scanf("%100s[^\n]", profissoes[i].nome);
         printf("Digite o codigo da profisao: ");
         scanf("%d", profissoes[i].codigo);
 
