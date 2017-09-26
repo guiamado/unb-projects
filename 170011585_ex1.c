@@ -22,7 +22,7 @@ int main(){
     int numProf;
     int tamanhoNome; 
     int i,r;
-    
+    int procuraCodigo, encontrou=0;
     printf("Digite a quantidade de profissoes a serem adicionadas: ");
     scanf("%d",&numProf);
   
@@ -31,17 +31,17 @@ int main(){
     for(i=0 ; i<numProf ; i++)
     {   
    
-        profissoes[i].nome  = (char *)  malloc(100*sizeof(char));
+        printf("Digite a quantidade de letras a serem adicionadas: ");
+        scanf("%d",&tamanhoNome);
+        profissoes[i].nome  = (char *)  malloc((tamanhoNome+1)*sizeof(char));
         profissoes[i].codigo    = (int *) malloc(sizeof(int));
-    }
 
-    for(i=0 ; i<numProf ; i++)
-    {
         printf("Digite o nome: "); 
-        scanf("%100s[^\n]", profissoes[i].nome);
+        scanf("%s", profissoes[i].nome);
         printf("Digite o codigo da profisao: ");
         scanf("%d", profissoes[i].codigo);
 
+	printf("%s\n",profissoes[i].nome);
        //----------------
         // printf("Digite a quantidade de letras a serem adicionadas: ");
        // scanf("%d",&tamanhoNome);
@@ -50,12 +50,24 @@ int main(){
        // printf("Digite o nome: "); 
        // scanf("%100[^\n]s", profissoes[i].nome);
     }
-
-    for (r=0 ; r<numProf ; r++)
+    printf("Digite o codigo da profissao que deseja buscar:");
+    scanf("%d",&procuraCodigo);
+    for(i=0;i<numProf;i++)
     {
-        printf("Nome:%s\n ",profissoes[r].nome);
-        printf("Codigo da profissao: %d\n ",*profissoes[r].codigo);
+	if(procuraCodigo == *profissoes[i].codigo){
+		printf("%s\n",profissoes[i].nome);
+		encontrou = 1;
+	}
+	
     }
+    if (encontrou==0)
+	    printf("Profissao nao encontrada\n");
+
+   // for (r=0 ; r<numProf ; r++)
+   // {
+    //    printf("Nome:%s\n ",profissoes[r].nome);
+      //  printf("Codigo da profissao: %d\n ",*profissoes[r].codigo);
+   // }
     for(i=0 ; i<numProf ; i++)
     {
         free(profissoes[i].codigo);

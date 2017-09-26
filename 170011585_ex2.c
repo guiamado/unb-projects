@@ -13,9 +13,9 @@ typedef struct{
 
  	char* nome;
     char* cargo;
-    char* departamento;
-    float* salario;
-    char* admissao;
+    char departamento;
+    float salario;
+    char admissao;
 
 } Funcionario;
 
@@ -35,31 +35,28 @@ int main(){
     {   
    
         funcs[i].nome  = (char *)  malloc(100*sizeof(char));
-        funcs[i].cargo    = (char *) malloc(sizeof(char));
-    }
+        funcs[i].cargo    = (char *) malloc(100*sizeof(char));
 
-    for(i=0 ; i<numProf ; i++)
-    {
         printf("Digite o nome: "); 
-        scanf("%100s[^\n]", funcs[i].nome);
-        printf("Digite o codigo da profisao: ");
-        scanf("%100s[^\n]", funcs[i].cargo);
+        scanf("%s", funcs[i].nome);
+        printf("Digite o codigo da cargo: ");
+        scanf("%s", funcs[i].cargo);
 
 
         printf("Digite o departamento: ");
-        scanf("%100s[^\n]", funcs[i].departamento);
+        scanf("%s", &funcs[i].departamento);
 
         printf("Digite a data de admissao(dd/mm/aaaa): ");
-        scanf("%10s[^\n]", funcs[i].admissao);
+        scanf("%s", &funcs[i].admissao);
 
         printf("Digite o salario: "); 
-        scanf("%f",(float *)funcs[i].salario);
+        scanf("%f", &funcs[i].salario);
     }
 
 //calculando a media
     for (r=0 ; r<numProf ; r++)
     {
-        media= media +(float *) funcs[r].salario;
+        media= media + funcs[r].salario;
     }
 
     for (r=0 ; r<numProf ; r++)
@@ -70,8 +67,8 @@ int main(){
     {
         printf("Nome:%s\n ",funcs[r].nome);
         printf("Cargo: %s\n ",funcs[r].cargo);
-        if((float *)funcs[r].salario > media)
-            printf("Salario:%f\n",*funcs[r].salario);
+        if( funcs[r].salario > media)
+            printf("Salario:%f\n",funcs[r].salario);
     }
     for(i=0 ; i<numProf ; i++)
     {
